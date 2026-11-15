@@ -33,6 +33,13 @@ def eq(*bands):
 VOCAL_EQ = eq(band(LC, 80, slope=24), band(LS, 140, -1.5), band(BELL, 320, -3, 1.2),
               band(BELL, 3200, 3, 0.9), band(HS, 12000, 2))
 
+# The shape of a classic dynamic stage vocal microphone: gentle bass roll-off, a wide presence
+# lift around 5 kHz, a small dip near 7.5 kHz, a second lift near 9.5 kHz, and a rolled-off top.
+# Approximated from memory of published response charts, not measured. It only copies the
+# frequency curve, and it stacks on top of whatever the user's own microphone already does.
+STAGE_MIC_EQ = eq(band(LC, 45, slope=12), band(LS, 120, -3), band(BELL, 5000, 4.5, 0.9),
+                  band(BELL, 7500, -2, 3), band(BELL, 9500, 3, 2.5), band(HC, 15000, slope=12))
+
 # name, category, [(module type, {param: value}), ...]; Trim and Output are added automatically
 PRESETS = [
     ("Stream vocal", "Voice", [("gate", {}), VOCAL_EQ, ("deess", {}), ("comp", {"character": 1}), ("lim", {})]),
@@ -61,6 +68,7 @@ PRESETS = [
     ("Singing — tuned", "Voice", [
         VOCAL_EQ, ("deess", {}), ("pitch", {"speed_ms": 60}), ("comp", {}),
         ("verb", {"space": 1, "mix": 22, "decay_s": 2.2}), ("lim", {})]),
+    ("Stage vocal mic", "Voice", [STAGE_MIC_EQ, ("deess", {}), ("comp", {}), ("lim", {})]),
     ("Dynamic mic", "Voice", [
         ("trim", {"gain_db": 12}),
         eq(band(LC, 80, slope=24), band(BELL, 3000, 3, 0.9), band(HS, 11000, 4)),
@@ -124,6 +132,7 @@ MODULE_PRESETS = [
      eq(band(LC, 60, slope=24), band(LS, 110, 4), band(BELL, 350, -3, 1), band(HS, 9000, 3))[1]),
     ("eq", "Voice — Bright",
      eq(band(LC, 120, slope=24), band(BELL, 4500, 3, 1), band(HS, 10000, 4))[1]),
+    ("eq", "Stage vocal mic", STAGE_MIC_EQ[1]),
     ("eq", "Podcast / Broadcast",
      eq(band(LC, 70, slope=18), band(LS, 150, 2), band(BELL, 400, -3, 1.4), band(BELL, 2500, 2, 1),
         band(HC, 16000, slope=12))[1]),

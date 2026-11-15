@@ -20,7 +20,7 @@ Parametrix is a free, open-source **all-in-one vocal channel strip** for OBS Stu
 | Cramping fix, CPU benchmark gate in CI | Not built |
 | Standalone per-module filters (M7): "Parametrix Denoise", "Parametrix Gate", "Parametrix Leveler", "Parametrix EQ", "Parametrix De-esser", "Parametrix Compressor", "Parametrix Multiband", "Parametrix Saturation", "Parametrix Reverb", "Parametrix Delay", "Parametrix Limiter" | Built: each is a rack of exactly one module, with its own short properties dialog and the editor in one-module mode (no rack bar, presets, Simple mode or output strip). The one-module editor was checked from a screenshot. **Not yet loaded in OBS.** They have no presets: module presets (§8) are still not built, so "share presets with the rack" is not met. |
 | Pitch correction (M8): key, scale (chromatic, major, minor, two pentatonics), retune speed, amount | Built. Tests pull detuned sines and a harmonic-rich tone onto the right note and leave in-tune notes alone. **Tested on synthetic tones only, never on a real voice.** Costs 0.6% of one core and 960 samples (20 ms) of latency. |
-| Module presets: 22 factory presets (EQ, compressor, gate, de-esser, reverb, delay, pitch) in `data/module-presets/`, user presets saved from the editor's "Presets" button in the module header; they work in the rack and in the standalone filters | Built. Core round trip and every factory file are unit-tested. The menu itself has not been clicked through. Not available in the OBS properties dialog, only in the editor. |
+| Module presets: 23 factory presets (EQ, compressor, gate, de-esser, reverb, delay, pitch) in `data/module-presets/`, user presets saved from the editor's "Presets" button in the module header; they work in the rack and in the standalone filters | Built. Core round trip and every factory file are unit-tested. The menu itself has not been clicked through. Not available in the OBS properties dialog, only in the editor. |
 
 Measured CPU on the development machine, stereo 48 kHz, 10 ms blocks (readings vary by about ±0.3 points between runs): the default "Stream vocal" rack uses 1.5% of one core; a rack with all 14 module types uses about 5%. The 2% target in §4 is met for the default rack and **not met** for the all-modules rack. Per module: Multiband 1.3%, Denoise 1.1–1.5%, Gate 0.7%, Pitch 0.6%, Saturation 0.6% (down from 1.0% after skipping the half-band filter's zero taps), Reverb 0.6%.
 
@@ -194,7 +194,7 @@ Settings live in the filter's `obs_data_t` as a **flat** key/value set. An earli
 - Factory presets live in the plugin's data dir (`obs_module_file("presets/")`). User presets live in its config dir (`obs_module_config_path("presets/")`).
 - Contributors add factory presets by PR with JSON only, no C++ changes.
 
-The preset browser groups the 24 factory chain presets into four categories. A preset ships in the milestone that completes its modules (for example "Game audio — tame" needs Multiband, M4). All values are starting points and must be tuned by ear before release.
+The preset browser groups the 25 factory chain presets into four categories. A preset ships in the milestone that completes its modules (for example "Game audio — tame" needs Multiband, M4). All values are starting points and must be tuned by ear before release.
 
 | Category | Factory chain preset | Used on | Main content |
 |---|---|---|---|
@@ -205,6 +205,7 @@ The preset browser groups the 24 factory chain presets into four categories. A p
 | Voice | Radio DJ | Mic | Multiband, saturation, thick low end |
 | Voice | Singing / Karaoke | Mic | Compressor, plate reverb, ping-pong delay |
 | Voice | Singing — tuned | Mic | Singing chain with Pitch correction (chromatic, 60 ms) and plate reverb |
+| Voice | Stage vocal mic | Mic | EQ shaped like a classic dynamic stage vocal microphone (bass roll-off, presence lift near 5 kHz, rolled-off top), then de-esser, compressor, limiter. The curve is from memory of published charts, not measured. |
 | Voice | Dynamic mic | Dynamic mics that need a lot of gain | Large trim, presence and air boost, Opto compressor |
 | Voice | VTuber — bright | Mic | High shelf, light tape saturation, tight compression |
 | Voice | Wandering talker | Mic, for people who move around | Leveler ahead of the EQ and compressor |
