@@ -10,7 +10,13 @@ Early development. The audio engine and the OBS filter (properties dialog, prese
 
 ## Install (Windows)
 
-Build the plugin (below), then copy the folder `release/obs-parametrix` into `C:\ProgramData\obs-studio\plugins\`, and restart OBS. Parametrix then appears under Filters → Audio filters. Needs OBS Studio 31.1 or newer.
+Run `obs-parametrix-<version>-windows-x64-Installer.exe` and click Finish. There is nothing to choose and no administrator prompt; if OBS is open, the installer offers to close it. Then start OBS: Parametrix appears under Filters → Audio Filters. Needs OBS Studio 31.1 or newer.
+
+The installer is not code-signed yet, so Windows SmartScreen shows "Windows protected your PC" the first time. Click **More info**, then **Run anyway**.
+
+To remove it, use Windows Settings → Apps → "Parametrix for OBS Studio". Presets you saved are kept.
+
+Without the installer: unzip the `windows-x64` archive and copy the folder `obs-parametrix` into `C:\ProgramData\obs-studio\plugins\`.
 
 ## Build
 
@@ -20,6 +26,12 @@ Requirements on Windows: Visual Studio 2022 (or Build Tools) with the C++ worklo
 cmake --preset windows-x64
 cmake --build --preset windows-x64 --config RelWithDebInfo
 cmake --install build_x64 --prefix release --config RelWithDebInfo
+```
+
+To build the installer as well (needs [Inno Setup](https://jrsoftware.org/isinfo.php) 6 or newer):
+
+```
+iscc /DAppVersion=0.1.0 /DSourceDir=release\obs-parametrix /DOutputDir=release installer\parametrix.iss
 ```
 
 macOS and Linux use the `macos` and `ubuntu-x86_64` presets from the OBS plugin template.

@@ -6,6 +6,7 @@
 !/build-aux
 !/cmake
 !/data
+!/installer
 !/src
 !/tests
 !/tools

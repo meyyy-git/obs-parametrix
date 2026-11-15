@@ -51,7 +51,7 @@ The **feature references** are FabFilter Pro-Q 3 (EQ) and iZotope Nectar/Neutron
 | Primary dev platform | Windows |
 | Release builds | Windows, macOS, Linux via the template's GitHub Actions |
 | macOS signing | Not notarized at first. The README explains right-click → Open. Notarize later if sponsored. |
-| Distribution | GitHub Releases + OBS Forums → Resources → Plugins |
+| Distribution | GitHub Releases + OBS Forums → Resources → Plugins. Windows: a one-click Inno Setup installer (`installer/parametrix.iss`, built by CI next to the zip) that installs to `%ProgramData%\obs-studio\plugins` without an administrator prompt and registers an uninstaller. It is unsigned, so SmartScreen warns on first run. macOS `.pkg` and Ubuntu `.deb` come from the template. |
 | Locales | `en-US` (required), `id-ID`; others via contributor PRs |
 
 ## 3. The rack

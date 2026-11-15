@@ -67,6 +67,22 @@ function Package {
     }
     Compress-Archive -Force @CompressArgs
     Log-Group
+
+    # One-click installer (Inno Setup, preinstalled on GitHub's Windows runners)
+    $Iscc = (Get-Command iscc -ErrorAction SilentlyContinue).Source
+    if ( -not $Iscc ) {
+        $Iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+    }
+    if ( Test-Path $Iscc ) {
+        Log-Group "Building installer for ${ProductName}..."
+        & $Iscc /Q "/DAppVersion=${ProductVersion}" "/DSourceDir=${ProjectRoot}\release\${Configuration}\${ProductName}" "/DOutputDir=${ProjectRoot}\release" "${ProjectRoot}\installer\parametrix.iss"
+        if ( $LASTEXITCODE -ne 0 ) {
+            throw "Inno Setup failed with exit code ${LASTEXITCODE}"
+        }
+        Log-Group
+    } else {
+        Write-Warning 'Inno Setup (iscc) not found; skipping the installer.'
+    }
 }
 
 Package
