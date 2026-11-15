@@ -1,0 +1,20 @@
+{
+  "_name": "Discord / voice chat",
+  "_category": "Music and game",
+  "chain": "m1,m2,m3,m4,m5",
+  "m1.type": "trim",
+  "m1.on": true,
+  "m2.type": "gate",
+  "m2.on": true,
+  "m2.threshold_db": -55,
+  "m3.type": "comp",
+  "m3.on": true,
+  "m3.ratio": 4,
+  "m3.threshold_db": -26,
+  "m3.attack_ms": 5,
+  "m3.makeup_db": 6,
+  "m4.type": "lim",
+  "m4.on": true,
+  "m5.type": "out",
+  "m5.on": true
+}

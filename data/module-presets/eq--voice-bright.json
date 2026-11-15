@@ -1,0 +1,20 @@
+{
+  "_name": "Voice — Bright",
+  "_type": "eq",
+  "nbands": 3,
+  "b0.type": 3,
+  "b0.freq_hz": 120,
+  "b0.gain_db": 0.0,
+  "b0.q": 0.7071,
+  "b0.slope": 3,
+  "b1.type": 0,
+  "b1.freq_hz": 4500,
+  "b1.gain_db": 3,
+  "b1.q": 1,
+  "b1.slope": 1,
+  "b2.type": 2,
+  "b2.freq_hz": 10000,
+  "b2.gain_db": 4,
+  "b2.q": 0.7071,
+  "b2.slope": 1
+}

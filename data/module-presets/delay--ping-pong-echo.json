@@ -1,0 +1,8 @@
+{
+  "_name": "Ping-pong echo",
+  "_type": "delay",
+  "time_ms": 320,
+  "feedback": 40,
+  "ping_pong": true,
+  "mix": 20
+}

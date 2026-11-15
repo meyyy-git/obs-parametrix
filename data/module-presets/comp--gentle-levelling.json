@@ -1,0 +1,9 @@
+{
+  "_name": "Gentle levelling",
+  "_type": "comp",
+  "threshold_db": -24,
+  "ratio": 2,
+  "attack_ms": 15,
+  "release_ms": 200,
+  "character": 1
+}

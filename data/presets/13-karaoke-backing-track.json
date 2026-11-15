@@ -1,0 +1,13 @@
+{
+  "_name": "Karaoke backing track",
+  "_category": "Music and game",
+  "chain": "m1,m2,m3",
+  "m1.type": "trim",
+  "m1.on": true,
+  "m1.align_delay_ms": 120,
+  "m2.type": "lim",
+  "m2.on": true,
+  "m2.ceiling_db": -3,
+  "m3.type": "out",
+  "m3.on": true
+}

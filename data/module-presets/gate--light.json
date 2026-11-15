@@ -1,0 +1,7 @@
+{
+  "_name": "Light",
+  "_type": "gate",
+  "threshold_db": -55,
+  "range_db": -15,
+  "ratio": 2
+}

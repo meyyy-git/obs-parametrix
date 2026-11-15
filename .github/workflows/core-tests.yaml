@@ -1,0 +1,20 @@
+name: Core tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  core:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022, macos-15]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S src/core -B build_core -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build build_core --config Release
+      - name: Test
+        run: ctest --test-dir build_core -C Release --output-on-failure

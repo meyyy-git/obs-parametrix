@@ -1,0 +1,10 @@
+{
+  "_name": "Flat (one band)",
+  "_type": "eq",
+  "nbands": 1,
+  "b0.type": 0,
+  "b0.freq_hz": 1000,
+  "b0.gain_db": 0,
+  "b0.q": 1,
+  "b0.slope": 1
+}

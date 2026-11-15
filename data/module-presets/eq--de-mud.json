@@ -1,0 +1,15 @@
+{
+  "_name": "De-mud",
+  "_type": "eq",
+  "nbands": 2,
+  "b0.type": 3,
+  "b0.freq_hz": 60,
+  "b0.gain_db": 0.0,
+  "b0.q": 0.7071,
+  "b0.slope": 1,
+  "b1.type": 0,
+  "b1.freq_hz": 300,
+  "b1.gain_db": -5,
+  "b1.q": 0.8,
+  "b1.slope": 1
+}

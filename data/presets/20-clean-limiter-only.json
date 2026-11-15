@@ -1,0 +1,11 @@
+{
+  "_name": "Clean — limiter only",
+  "_category": "Fix",
+  "chain": "m1,m2,m3",
+  "m1.type": "trim",
+  "m1.on": true,
+  "m2.type": "lim",
+  "m2.on": true,
+  "m3.type": "out",
+  "m3.on": true
+}

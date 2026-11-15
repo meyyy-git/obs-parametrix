@@ -1,0 +1,7 @@
+{
+  "_name": "Slapback",
+  "_type": "delay",
+  "time_ms": 110,
+  "feedback": 0,
+  "mix": 18
+}

@@ -1,0 +1,9 @@
+{
+  "_name": "Tight voice",
+  "_type": "comp",
+  "threshold_db": -22,
+  "ratio": 4,
+  "attack_ms": 5,
+  "release_ms": 100,
+  "makeup_db": 5
+}

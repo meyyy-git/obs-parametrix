@@ -1,0 +1,8 @@
+{
+  "_name": "Big hall",
+  "_type": "verb",
+  "space": 2,
+  "size": 85,
+  "decay_s": 4.0,
+  "mix": 30
+}

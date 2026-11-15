@@ -1,0 +1,14 @@
+{
+  "_name": "Game audio — tame",
+  "_category": "Music and game",
+  "chain": "m1,m2,m3,m4",
+  "m1.type": "trim",
+  "m1.on": true,
+  "m2.type": "mb",
+  "m2.on": true,
+  "m3.type": "lim",
+  "m3.on": true,
+  "m3.ceiling_db": -3,
+  "m4.type": "out",
+  "m4.on": true
+}

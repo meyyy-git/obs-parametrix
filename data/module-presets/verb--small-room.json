@@ -1,0 +1,8 @@
+{
+  "_name": "Small room",
+  "_type": "verb",
+  "space": 0,
+  "size": 30,
+  "decay_s": 0.6,
+  "mix": 12
+}
